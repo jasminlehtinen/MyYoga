@@ -1,0 +1,54 @@
+<h2>Login</h2>
+<form 
+  *ngIf='!isLoggedIn'
+  name='form'
+  (ngSubmit)='f.form.valid && onSubmit()'
+  #f='ngForm'
+  novalidate
+>
+  <div>
+    <label for='email'>Email</label>
+    <input 
+      type='email' 
+      name='email'
+      [(ngModel)]='form.email'
+      required
+      #email='ngModel'
+    />
+    <div
+      role='alert'
+      *ngIf='f.submitted && email.invalid'
+    >
+      Email required!
+    </div>
+  </div>
+  <div>
+    <label for='password'>Password</label>
+    <input 
+      type='password' 
+      name='password'
+      [(ngModel)]='form.password'
+      required
+      #password='ngModel'
+    />
+    <div
+      role='alert'
+      *ngIf='f.submitted && password.invalid'
+    >
+      Password required!
+    </div>
+  </div>
+  <div>
+    <button>Login</button>
+    <!-- Register option added later -->
+    <!-- <a routerLink='/register'>Register</a> -->
+  </div>
+  <div>
+    <div
+     role='alert'
+     *ngIf='f.submitted && isLoginFailed'
+    >
+      Login failed: {{ errorMessage }}
+    </div>
+  </div>
+</form>
