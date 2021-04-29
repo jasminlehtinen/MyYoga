@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'
 
-import { HomeComponent } from './home/home.component'
+import { MainComponent } from './main/main.component'
 import { LoginComponent } from './login/login.component'
+import { RegisterComponent } from './register/register.component';
 import { DisplayPosesComponent } from './display-poses/display-poses.component'
 import { AuthGuardService } from './_services/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: MainComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: RegisterComponent },
   { path: 'poses', component: DisplayPosesComponent, canActivate: [AuthGuardService] },
   { path: '**', redirectTo: '' }
 ]

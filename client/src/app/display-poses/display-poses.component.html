@@ -1,21 +1,28 @@
 <h1>Your Yoga Poses</h1>
-<h3>Logged in as: {{user.email}}</h3>
+
+<p>User {{this.user.email}}</p>
 
 <table>
   <tr>
+    <th>ID</th>
     <th>English Name</th>
     <th>Sanskrit Name</th>
     <th>Type</th>
     <th>Difficulty</th>
     <th>Link</th>
+    <th>User</th>
   </tr>
   <tr *ngFor='let pose of poses'>
-    <th>{{pose.englishName}}</th>
-    <th>{{pose.sanskritName}}</th>
+    <th>{{pose.id}}</th>
+    <th>{{pose.englishname}}</th>
+    <th>{{pose.sanskritname}}</th>
     <th>{{pose.type}}</th>
     <th>{{pose.difficulty}}</th>
     <th>{{pose.link}}</th>
+    <th>{{pose.user_email}}</th>
   </tr>
 </table>
 
+<app-add-pose></app-add-pose>
 
+<button (click)='toLogout()'>Logout</button>

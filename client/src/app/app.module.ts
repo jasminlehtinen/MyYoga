@@ -4,20 +4,24 @@ import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component'
+import { RegisterComponent } from './register/register.component';
 import { DisplayPosesComponent } from './display-poses/display-poses.component'
 
 import { AppRoutingModule } from './app-routing.module';
 import { PosesService } from './_services/poses.service';
 import { EnvServiceProvider } from './_services/env.service.provider';
+import { AddPoseComponent } from './add-pose/add-pose.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    MainComponent,
     LoginComponent,
-    DisplayPosesComponent
+    RegisterComponent,
+    DisplayPosesComponent,
+    AddPoseComponent
   ],
   imports: [
     BrowserModule,

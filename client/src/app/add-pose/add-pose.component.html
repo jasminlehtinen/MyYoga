@@ -1,0 +1,93 @@
+<div>
+  <h3>Add new yoga pose</h3>
+  <form
+    *ngIf='!isSuccessful'
+    name='form'
+    (ngSubmit)='f.form.valid && onSubmit()'
+    #f='ngForm'
+    novalidate
+  >
+    <div>
+      <label for='englishname'>English name</label>
+      <input
+        type='englishname'
+        name='englishname'
+        [(ngModel)]='form.englishname'
+        required
+        #englishname='ngModel'
+      />
+      <div
+        role='alert'
+        *ngIf='f.submitted && englishname.invalid'
+      >
+        Name required!
+      </div>
+    </div>
+    <div>
+      <label for='sanskritname'>Sanskrit name</label>
+      <input
+        type='sanskritname'
+        name='sanskritname'
+        [(ngModel)]='form.sanskritname'
+        #sanskritname='ngModel'
+      />
+    </div>
+    <div>
+      <label for='type'>Type</label>
+      <input
+        type='type'
+        name='type'
+        [(ngModel)]='form.type'
+        required
+        #type='ngModel'
+      />
+      <div
+        role='alert'
+        *ngIf='f.submitted && type.invalid'
+      >
+        Type required!
+      </div>
+    </div>
+    <div>
+      <label for='difficulty'>Difficulty</label>
+      <input
+        type='difficulty'
+        name='difficulty'
+        [(ngModel)]='form.difficulty'
+        required
+        #difficulty='ngModel'
+      />
+      <div
+        role='alert'
+        *ngIf='f.submitted && difficulty.invalid'
+      >
+        Difficulty required!
+      </div>
+    </div>
+    <div>
+      <label for='link'>Link</label>
+      <input
+        type='link'
+        name='link'
+        [(ngModel)]='form.link'
+        required
+        #link='ngModel'
+      />
+      <div
+        role='alert'
+        *ngIf='f.submitted && link.invalid'
+      >
+        Link required!
+      </div>
+    </div>
+    <div>
+      <button>Add pose</button>
+    </div>
+    <div
+      role='alert'
+      *ngIf='f.submitted && submitFailed'
+    >
+      Something went wrong: {{ errorMessage }}
+    </div>
+  </form>
+</div>

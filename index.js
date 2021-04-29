@@ -1,25 +1,30 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 const cors = require('cors')
-const query = require('./database/poses')
+const posesQuery = require('./database/poses')
+const usersQuery = require('./database/users')
 const logger = require('./services/logger')
 
 const app = express()
 
-app.use(bodyParser.json())
+app.use(express.json())
 app.use(cors())
 
 const port = process.env.PORT
 
 // Routes for REST API
-app.get('/api/poses', logger.authenticate, query.getAllPoses)
-app.get('/api/poses/:id', logger.authenticate, query.getPoseById)
-app.post('/api/poses', logger.authenticate, query.addPose)
-app.delete('/api/poses/:id', logger.authenticate, query.deletePose)
-app.put("/api/poses/:id", logger.authenticate, query.updatePose)
+app.get('/api/poses', logger.authenticate, posesQuery.getAllPoses)
+app.get('/api/poses/:id', logger.authenticate, posesQuery.getPoseById)
+app.post('/api/poses', logger.authenticate, posesQuery.addPose)
+app.delete('/api/poses/:id', logger.authenticate, posesQuery.deletePose)
+app.put("/api/poses/:id", logger.authenticate, posesQuery.updatePose)
 
 // Route for login
 app.post('/api/login', logger.login)
+
+// Route for register
+app.post('/api/signup', usersQuery.addUser)
+
+app.get('/api/users', usersQuery.getUser)
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}.`)

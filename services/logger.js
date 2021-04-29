@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
 const user = require('../database/users')
+const bcrypt = require('bcrypt')
 
 // User login
 const login = (req, res) => {
@@ -15,7 +15,7 @@ const login = (req, res) => {
 
       // Sends the token if password matches
       if (bcrypt.compareSync(password, hashPassword)) {
-        res.send({token})
+        res.send({token, email})
       } else {
         res.sendStatus(400).end()
       }

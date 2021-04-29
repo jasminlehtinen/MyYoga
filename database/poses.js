@@ -1,5 +1,21 @@
 const db = require('./dbconfig')
 
+const getAllPoses = (req, res) => {
+  const query = {
+    text: 'SELECT * FROM poses WHERE user_email = $1',
+    values: [req.headers.user_email]
+  }
+
+  db.query(query, (err, result) => {
+    if (err) {
+      return console.error('Error executing the query', err.stack)
+    } else {
+      res.json(result.rows)
+    }
+  })
+}
+
+/*
 // Get all poses
 const getAllPoses = (req, res) => {
   db.query('SELECT * FROM poses', (err, result) => {
@@ -10,6 +26,7 @@ const getAllPoses = (req, res) => {
     }
   })
 }
+*/
 
 // Get a pose by an id
 const getPoseById = (req, res) => {
@@ -34,11 +51,11 @@ const getPoseById = (req, res) => {
 // Add a new pose
 const addPose = (req, res) => {
   // Extract information from the request body
-  const updatedPose = req.body
+  const newPose = req.body
 
   const query = {
-    text: 'INSERT INTO poses (englishName, sanskritName, type, difficulty, link) VALUES ($1, $2, $3, $4, $5)',
-    values: [updatedPose.englishName, updatedPose.sanskritName, updatedPose.type, updatedPose.difficulty, updatedPose.link]
+    text: 'INSERT INTO poses (englishname, sanskritname, type, difficulty, link, user_email) VALUES ($1, $2, $3, $4, $5, $6)',
+    values: [newPose.englishname, newPose.sanskritname, newPose.type, newPose.difficulty, newPose.link, newPose.user_email]
   }
 
   db.query(query, (err, res) => {
@@ -47,7 +64,7 @@ const addPose = (req, res) => {
     }
   })
 
-  res.json(updatedPose)
+  res.json(newPose)
 }
 
 // Delete a pose
@@ -71,8 +88,8 @@ const updatePose = (req, res) => {
   const updatedPose = req.body
 
   const query = {
-    text: 'UPDATE poses SET englishName=$1, sanskritName=$2, type=$3, difficulty=$4, link=$5',
-    values: [updatedPose.englishName, updatedPose.sanskritName, updatedPose.type, updatedPose.difficulty, updatedPose.link]
+    text: 'UPDATE poses SET englishname=$1, sanskritname=$2, type=$3, difficulty=$4, link=$5',
+    values: [updatedPose.englishname, updatedPose.sanskritname, updatedPose.type, updatedPose.difficulty, updatedPose.link]
   }
 
   db.query(query, (err, res) => {

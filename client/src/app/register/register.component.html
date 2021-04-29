@@ -1,7 +1,7 @@
 <div>
-  <h2>Login</h2>
-  <form 
-    *ngIf='!isLoggedIn'
+  <h2>Register</h2>
+  <form
+    *ngIf='!isSuccessful'
     name='form'
     (ngSubmit)='f.form.valid && onSubmit()'
     #f='ngForm'
@@ -9,14 +9,14 @@
   >
     <div>
       <label for='email'>Email</label>
-      <input 
-        type='email' 
+      <input
+        type='email'
         name='email'
         [(ngModel)]='form.email'
         required
         #email='ngModel'
       />
-      <div
+      <div 
         role='alert'
         *ngIf='f.submitted && email.invalid'
       >
@@ -25,30 +25,35 @@
     </div>
     <div>
       <label for='password'>Password</label>
-      <input 
-        type='password' 
+      <input
+        type='password'
         name='password'
         [(ngModel)]='form.password'
         required
         #password='ngModel'
       />
-      <div
-        role='alert'
+      <div 
+        role='alert' 
         *ngIf='f.submitted && password.invalid'
       >
         Password required!
       </div>
     </div>
     <div>
-      <button>Login</button>
+      <button>Sign Up</button>
     </div>
-    <div>
-      <div
-        role='alert'
-        *ngIf='f.submitted && isLoginFailed'
-      >
-        Login failed: {{ errorMessage }}
-      </div>
+    <div
+      role='alert'
+      *ngIf='f.submitted && signUpFailed'
+    >
+      Signup failed: {{ errorMessage }}
     </div>
   </form>
+  <div 
+    role='alert'
+    *ngIf='isSuccessful'
+  >
+    Your registration is successful!
+    <button (click)='toLogin()'>Login</button>
+  </div>
 </div>

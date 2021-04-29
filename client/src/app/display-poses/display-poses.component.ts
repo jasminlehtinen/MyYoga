@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { PosesService } from '../_services/poses.service';
-import { TokenStorageService } from '../_services/token-storage.service';
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import { PosesService } from '../_services/poses.service'
+import { TokenStorageService } from '../_services/token-storage.service'
 
 @Component({
   selector: 'app-display-poses',
@@ -12,11 +13,17 @@ export class DisplayPosesComponent implements OnInit {
   user: any
   public poses = []
 
-  constructor(private tokenStorage: TokenStorageService, private _poseService: PosesService) {}
+  constructor(private router: Router, private tokenStorage: TokenStorageService, private _poseService: PosesService) {}
 
   ngOnInit() {
-    this.user = this.tokenStorage.getUser();
+    this.user = this.tokenStorage.getUser()
     this._poseService.getPoses()
       .subscribe(data => this.poses = data)
   }
+
+  toLogout() {
+    this.user = this.tokenStorage.signOut()
+    this.router.navigate(['/home'])
+  }
 }
+

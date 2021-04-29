@@ -1,8 +1,9 @@
 export interface IPoses {
-  id: number,
-  englishName: string,
-  sanskritName: string,
-  type: string,
-  difficulty: string,
+  id: number
+  englishname: string
+  sanskritname: string
+  type: string
+  difficulty: string
   link: string
+  user_email: string
 }
