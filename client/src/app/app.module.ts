@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PosesService } from './_services/poses.service';
 import { EnvServiceProvider } from './_services/env.service.provider';
 import { AddPoseComponent } from './add-pose/add-pose.component';
+import { DisplaySinglePoseComponent } from './display-single-pose/display-single-pose.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AddPoseComponent } from './add-pose/add-pose.component';
     LoginComponent,
     RegisterComponent,
     DisplayPosesComponent,
-    AddPoseComponent
+    AddPoseComponent,
+    DisplaySinglePoseComponent
   ],
   imports: [
     BrowserModule,

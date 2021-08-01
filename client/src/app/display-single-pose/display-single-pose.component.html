@@ -20,13 +20,8 @@
     <th>{{pose.difficulty}}</th>
     <th>{{pose.link}}</th>
     <th>{{pose.user_email}}</th>
-    <button (click)='deletePose(pose)'>Delete</button>
 
-    <button (click)='getPoseById(pose)'>Get</button>
+    <button (click)='toDisplayPoses()'>Back</button>
 
   </tr>
 </table>
-
-<app-add-pose></app-add-pose>
-
-<button (click)='toLogout()'>Logout</button>

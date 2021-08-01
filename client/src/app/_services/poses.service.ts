@@ -29,6 +29,21 @@ export class PosesService {
                     .pipe(catchError(this.errorHandler))
   }
 
+  getPoseById(id): Observable<IPoses[]> {
+    let user = this.tokenStorage.getUser()
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `${user.token}`,
+        'user_email': `${user.email}`
+      })
+    }
+
+    return this.http.get<IPoses[]>(this._url + 'poses' + '/' + id, httpOptions)
+                    .pipe(catchError(this.errorHandler))
+  }
+
   addPose(pose): Observable<IPoses[]> {
     let user = this.tokenStorage.getUser()
 
@@ -48,6 +63,21 @@ export class PosesService {
                       user_email: user.email
                     }, httpOptions)
                     .pipe(catchError(this.errorHandler))
+  }
+
+  deletePose(id): Observable<IPoses[]> {
+    let user = this.tokenStorage.getUser()
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `${user.token}`
+      }),
+    }
+
+    return this.http.delete<IPoses[]>(this._url + 'poses' + '/' + id, httpOptions)
+    .pipe(catchError(this.errorHandler))
+
   }
 
   errorHandler(error: HttpErrorResponse) {

@@ -29,7 +29,7 @@ export class AddPoseComponent implements OnInit {
           console.log(data)
           this.isSuccessful = true
           this.submitFailed = false
-          this.reloadPage();
+          this.reloadPage()
         },
         err => {
           this.errorMessage = err.errorMessage
