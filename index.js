@@ -16,7 +16,7 @@ app.get('/api/poses', logger.authenticate, posesQuery.getAllPoses)
 app.get('/api/poses/:id', logger.authenticate, posesQuery.getPoseById)
 app.post('/api/poses', logger.authenticate, posesQuery.addPose)
 app.delete('/api/poses/:id', logger.authenticate, posesQuery.deletePose)
-app.put("/api/poses/:id", logger.authenticate, posesQuery.updatePose)
+app.put('/api/poses/:id', logger.authenticate, posesQuery.updatePose)
 
 // Route for login
 app.post('/api/login', logger.login)

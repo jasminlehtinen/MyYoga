@@ -1,9 +1,9 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { Observable, throwError } from 'rxjs'
 import { catchError } from 'rxjs/operators'
-import { IPoses } from '../poses';
-import { TokenStorageService } from './token-storage.service';
+import { IPoses } from '../poses'
+import { TokenStorageService } from './token-storage.service'
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +65,27 @@ export class PosesService {
                     .pipe(catchError(this.errorHandler))
   }
 
+  updatePose(id, pose): Observable<IPoses[]> {
+    let user = this.tokenStorage.getUser()
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `${user.token}`,
+        'user_email': `${user.email}`
+      }),
+    } 
+
+    return this.http.put<IPoses[]>(this._url + 'poses' + '/' + id, {
+                      englishname: pose.englishname,
+                      sanskritname: pose.sanskritname,
+                      type: pose.type,
+                      difficulty: pose.difficulty,
+                      link: pose.link
+                    }, httpOptions)
+                    .pipe(catchError(this.errorHandler))
+  }
+
   deletePose(id): Observable<IPoses[]> {
     let user = this.tokenStorage.getUser()
 
@@ -76,7 +97,7 @@ export class PosesService {
     }
 
     return this.http.delete<IPoses[]>(this._url + 'poses' + '/' + id, httpOptions)
-    .pipe(catchError(this.errorHandler))
+                    .pipe(catchError(this.errorHandler))
 
   }
 

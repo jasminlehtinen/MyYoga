@@ -21,12 +21,10 @@
     <th>{{pose.link}}</th>
     <th>{{pose.user_email}}</th>
     <button (click)='deletePose(pose)'>Delete</button>
-
-    <button (click)='getPoseById(pose)'>Get</button>
-
+    <button (click)='updatePose(pose)'>Update</button>
   </tr>
 </table>
 
-<app-add-pose></app-add-pose>
+<app-form-control [isAdd]='isAdd'></app-form-control>
 
 <button (click)='toLogout()'>Logout</button>

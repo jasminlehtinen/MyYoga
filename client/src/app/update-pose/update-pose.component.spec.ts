@@ -1,22 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
-import { RegisterComponent } from './register.component'
+import { UpdatePoseComponent } from './update-pose.component'
 
-describe('RegisterComponent', () => {
-  let component: RegisterComponent
-  let fixture: ComponentFixture<RegisterComponent>
+describe('UpdatePoseComponent', () => {
+  let component: UpdatePoseComponent
+  let fixture: ComponentFixture<UpdatePoseComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ]
+      declarations: [ UpdatePoseComponent ]
     })
     .compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RegisterComponent)
+    fixture = TestBed.createComponent(UpdatePoseComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
-  });
+  })
 
   it('should create', () => {
     expect(component).toBeTruthy()

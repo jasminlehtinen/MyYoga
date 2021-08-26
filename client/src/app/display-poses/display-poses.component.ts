@@ -12,6 +12,7 @@ export class DisplayPosesComponent implements OnInit {
 
   user: any
   public poses = []
+  isAdd = true
 
   constructor(private router: Router, private tokenStorage: TokenStorageService, private _poseService: PosesService) {}
 
@@ -23,7 +24,7 @@ export class DisplayPosesComponent implements OnInit {
   }
 
   reloadPage(): void {
-    window.location.reload();
+    window.location.reload()
   }
 
   deletePose(pose) {
@@ -36,7 +37,7 @@ export class DisplayPosesComponent implements OnInit {
       })
   }
 
-  getPoseById(pose) {
+  updatePose(pose) {
     let id = pose.id
 
     this.router.navigate(['/poses' + '/' + id])
@@ -47,4 +48,3 @@ export class DisplayPosesComponent implements OnInit {
     this.router.navigate(['/home'])
   }
 }
-

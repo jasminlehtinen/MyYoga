@@ -1,5 +1,6 @@
 <div>
-  <h3>Add new yoga pose</h3>
+  <h3 *ngIf='isAdd'>Add a new yoga pose</h3>
+  <h3 *ngIf='isUpdate'>Update your yoga pose</h3>
   <form
     *ngIf='!isSuccessful'
     name='form'
@@ -80,9 +81,12 @@
         Link required!
       </div>
     </div>
+
     <div>
-      <button>Add pose</button>
+      <button *ngIf='isAdd'>Add pose</button>
+      <button *ngIf='isUpdate'>Update pose</button>
     </div>
+
     <div
       role='alert'
       *ngIf='f.submitted && submitFailed'

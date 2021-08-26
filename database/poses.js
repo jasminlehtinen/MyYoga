@@ -15,19 +15,6 @@ const getAllPoses = (req, res) => {
   })
 }
 
-/*
-// Get all poses
-const getAllPoses = (req, res) => {
-  db.query('SELECT * FROM poses', (err, result) => {
-    if (err) {
-      console.error(err)
-    } else {
-      res.json(result.rows)
-    }
-  })
-}
-*/
-
 // Get a pose by an id
 const getPoseById = (req, res) => {
   const query = {
@@ -88,8 +75,8 @@ const updatePose = (req, res) => {
   const updatedPose = req.body
 
   const query = {
-    text: 'UPDATE poses SET englishname=$1, sanskritname=$2, type=$3, difficulty=$4, link=$5',
-    values: [updatedPose.englishname, updatedPose.sanskritname, updatedPose.type, updatedPose.difficulty, updatedPose.link]
+    text: 'UPDATE poses SET englishname=$1, sanskritname=$2, type=$3, difficulty=$4, link=$5 WHERE id = $6',
+    values: [updatedPose.englishname, updatedPose.sanskritname, updatedPose.type, updatedPose.difficulty, updatedPose.link, req.params.id]
   }
 
   db.query(query, (err, res) => {
