@@ -1,0 +1,10 @@
+.page-header {
+  background-image: linear-gradient(to bottom left, #86BDAF, #489988);
+  padding: 0.5em;
+}
+
+h1 {
+  color: #FFFFFF;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+}
