@@ -17,6 +17,21 @@ const getUser = (email, next) => {
   })
 }
 
+// Get all users
+const getAllUsers = (req, res) => {
+  const query = {
+    text: 'SELECT * FROM users'
+  }
+
+  db.query(query, (err, result) => {
+    if (err) {
+      return console.error('Error executing the query', err.stack)
+    } else {
+      res.json(result.rows)
+    }
+  })
+}
+
 // Create a new user
 const addUser = (req, res) => {
   const user = req.body
@@ -43,5 +58,6 @@ const addUser = (req, res) => {
 
 module.exports = {
   getUser: getUser,
+  getAllUsers: getAllUsers,
   addUser: addUser
 }

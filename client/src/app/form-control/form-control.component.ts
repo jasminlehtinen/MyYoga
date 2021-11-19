@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { PosesService } from '../_services/poses.service'
-
 import { ActivatedRoute } from '@angular/router'
+import { PosesService } from '../_services/poses.service'
 
 @Component({
   selector: 'app-form-control',
@@ -30,7 +29,6 @@ export class FormControlComponent implements OnInit {
   }
 
   onSubmit(): void {
-
     if(this.isAdd) {
       this.posesService.addPose(this.form)
       .subscribe(

@@ -1,0 +1,10 @@
+.mat-table__button--gradient {
+  background-image: linear-gradient(#B7CEAD, #C8DAC0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 22px;
+  height: 20px;
+  width: 25px;
+  font-size: 12px;
+}

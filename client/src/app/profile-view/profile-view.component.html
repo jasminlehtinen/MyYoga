@@ -1,0 +1,35 @@
+<div>
+  <div class='info'>
+    <h1 class='info__header'>Your Yoga Poses</h1>
+    <p class='info__user'>User <small>{{this.user.email}}</small></p>
+    <button 
+      (click)='toLogout()'
+      mat-flat-button 
+      class='info__logout-button--gradient'
+    >
+      Logout
+    </button>
+  </div>
+  <div class='poses-container'>
+    <div class='poses-container__button-container'>
+      <button 
+        (click)='onTabClick(0)'
+        mat-stroked-button
+        class='poses-container__button'
+      >
+        POSES
+      </button>
+      <button 
+        (click)='onTabClick(1)'
+        mat-stroked-button
+        class='poses-container__button poses-container__button--left-margin'
+      >
+        ADD NEW
+      </button>
+    </div>
+    <div>
+      <app-display-poses *ngIf='tabIndex == 0'></app-display-poses>
+      <app-form-control *ngIf='tabIndex == 1' [isAdd]='isAdd'></app-form-control>
+    </div>
+  </div>
+</div>

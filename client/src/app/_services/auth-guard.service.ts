@@ -9,6 +9,7 @@ export class AuthGuardService implements CanActivate {
 
   constructor(public token: TokenStorageService, public router: Router) { }
 
+  // If a valid token isn't found, sends back to login page
   canActivate(): boolean {
     if (!this.token.getToken()) {
       this.router.navigate(['login'])

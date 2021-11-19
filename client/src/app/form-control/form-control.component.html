@@ -2,91 +2,123 @@
   <h3 *ngIf='isAdd'>Add a new yoga pose</h3>
   <h3 *ngIf='isUpdate'>Update your yoga pose</h3>
   <form
-    *ngIf='!isSuccessful'
     name='form'
+    *ngIf='!isSuccessful'
     (ngSubmit)='f.form.valid && onSubmit()'
     #f='ngForm'
     novalidate
   >
     <div>
-      <label for='englishname'>English name</label>
-      <input
-        type='englishname'
-        name='englishname'
-        [(ngModel)]='form.englishname'
-        required
-        #englishname='ngModel'
-      />
-      <div
-        role='alert'
-        *ngIf='f.submitted && englishname.invalid'
+      <!-- English name -->
+      <mat-form-field appearance='standard'>
+        <mat-label for='englishname'>English Name</mat-label>
+        <input
+          name='englishname'
+          type='englishname'
+          [(ngModel)]='form.englishname'
+          #englishname='ngModel'
+          matInput
+          required
+        />
+        <div
+          role='alert'
+          *ngIf='f.submitted && englishname.invalid'
+        >
+          Name required!
+        </div>
+      </mat-form-field>
+    </div>
+    <div>
+      <!-- Sanskrit name -->
+      <mat-form-field appearance='standard'>
+        <mat-label for='sanskritname'>Sanskrit name</mat-label>
+        <input
+          name='sanskritname'
+          type='sanskritname'
+          [(ngModel)]='form.sanskritname'
+          #sanskritname='ngModel'
+          matInput
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <!-- Type -->
+      <mat-form-field appearance='standard'>
+        <mat-label for='type'>Type</mat-label>
+        <input
+          name='type'
+          type='type'
+          [(ngModel)]='form.type'
+          #type='ngModel'
+          matInput
+          required
+        />
+        <div
+          role='alert'
+          *ngIf='f.submitted && type.invalid'
+        >
+          Type required!
+        </div>
+      </mat-form-field>
+    </div>
+    <div>
+      <!-- Difficulty -->
+      <mat-form-field appearance='standard'>
+        <mat-label for='difficulty'>Difficulty</mat-label>
+        <input
+          name='difficulty'
+          type='difficulty'
+          [(ngModel)]='form.difficulty'
+          #difficulty='ngModel'
+          matInput
+          required
+        />
+        <div
+          role='alert'
+          *ngIf='f.submitted && difficulty.invalid'
+        >
+          Difficulty required!
+        </div>
+      </mat-form-field>
+    </div>
+    <div>
+      <!-- Link -->
+      <mat-form-field appearance='standard'>
+        <mat-label for='link'>Link</mat-label>
+        <input
+          name='link'
+          type='link'
+          [(ngModel)]='form.link'
+          #link='ngModel'
+          matInput
+          required
+        />
+        <div
+          role='alert'
+          *ngIf='f.submitted && link.invalid'
+        >
+          Link required!
+        </div>
+      </mat-form-field>
+    </div>
+    <div>
+      <!-- Add button -->
+      <button 
+        *ngIf='isAdd'
+        mat-flat-button
+        class='register-container__button--gradient'
       >
-        Name required!
-      </div>
-    </div>
-    <div>
-      <label for='sanskritname'>Sanskrit name</label>
-      <input
-        type='sanskritname'
-        name='sanskritname'
-        [(ngModel)]='form.sanskritname'
-        #sanskritname='ngModel'
-      />
-    </div>
-    <div>
-      <label for='type'>Type</label>
-      <input
-        type='type'
-        name='type'
-        [(ngModel)]='form.type'
-        required
-        #type='ngModel'
-      />
-      <div
-        role='alert'
-        *ngIf='f.submitted && type.invalid'
+        Add
+      </button>
+      <!-- Update button -->
+      <button 
+        *ngIf='isUpdate'
+        mat-flat-button
+        class='register-container__button--gradient'
       >
-        Type required!
-      </div>
+        Update
+      </button>
     </div>
-    <div>
-      <label for='difficulty'>Difficulty</label>
-      <input
-        type='difficulty'
-        name='difficulty'
-        [(ngModel)]='form.difficulty'
-        required
-        #difficulty='ngModel'
-      />
-      <div
-        role='alert'
-        *ngIf='f.submitted && difficulty.invalid'
-      >
-        Difficulty required!
-      </div>
-    </div>
-    <div>
-      <label for='link'>Link</label>
-      <input
-        type='link'
-        name='link'
-        [(ngModel)]='form.link'
-        required
-        #link='ngModel'
-      />
-      <div
-        role='alert'
-        *ngIf='f.submitted && link.invalid'
-      >
-        Link required!
-      </div>
-    </div>
-
-    <div>
-      <button *ngIf='isAdd'>Add pose</button>
-      <button *ngIf='isUpdate'>Update pose</button>
-    </div>
-
     <div
       role='alert'
       *ngIf='f.submitted && submitFailed'

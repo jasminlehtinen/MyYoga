@@ -1,8 +1,11 @@
-.login-container {
+.login-container, .login-container__form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #000000;
+}
+
+.login-container {
+  border: 1px solid #999999;
   border-radius: 25px;
   margin: auto;
   margin-top: 5em;
@@ -10,13 +13,23 @@
   min-width: 200px;
 }
 
-.button-gradient {
-  background-image: linear-gradient(#B0F5D6, #87EBD6);
-  border-radius: 18px;
-  padding: 0em;
-  width: 6em;
+.login-container__header {
+  margin-top: 2em;
 }
 
-.button-gradient:hover {
+.login-container__form {
+  padding: 2em;
+}
+
+.login-container__button--gradient {
+  background-image: linear-gradient(#B0F5D6, #87EBD6);
+  border-radius: 18px;
+  margin-bottom: 2em;
+  padding: 0em;
+  width: 6em;
+  font-size: 15px;
+}
+
+.login-container__button--gradient:hover {
   box-shadow: 0 1px 2px #aaaaaa, 0 5px 10px 0 #aaaaaa;
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { PosesService } from '../_services/poses.service'
-import { TokenStorageService } from '../_services/token-storage.service'
 
 @Component({
   selector: 'app-display-poses',
@@ -10,15 +9,13 @@ import { TokenStorageService } from '../_services/token-storage.service'
 })
 export class DisplayPosesComponent implements OnInit {
 
-  user: any
   public poses = []
-  isAdd = true
+  displayedColumns = ['englishName', 'sanskritName', 'type', 'difficulty', 'link', 'delete', 'update']
 
-  constructor(private router: Router, private tokenStorage: TokenStorageService, private _poseService: PosesService) {}
+  constructor(private router: Router, private _poseService: PosesService) {}
 
   ngOnInit() {
-    this.user = this.tokenStorage.getUser()
-
+    /* Display all poses added by an user */
     this._poseService.getPoses()
       .subscribe(data => this.poses = data)
   }
@@ -27,6 +24,7 @@ export class DisplayPosesComponent implements OnInit {
     window.location.reload()
   }
 
+  /* Delete a pose from the page */
   deletePose(pose) {
     let id = pose.id
 
@@ -37,14 +35,10 @@ export class DisplayPosesComponent implements OnInit {
       })
   }
 
+  /* Update an existing pose */
   updatePose(pose) {
     let id = pose.id
 
     this.router.navigate(['/poses' + '/' + id])
-  }
-
-  toLogout() {
-    this.user = this.tokenStorage.signOut()
-    this.router.navigate(['/home'])
   }
 }

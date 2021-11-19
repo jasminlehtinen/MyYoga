@@ -24,7 +24,8 @@ app.post('/api/login', logger.login)
 // Route for register
 app.post('/api/signup', usersQuery.addUser)
 
-app.get('/api/users', usersQuery.getUser)
+app.get('/api/user', usersQuery.getUser)
+app.get('/api/users', usersQuery.getAllUsers)
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}.`)

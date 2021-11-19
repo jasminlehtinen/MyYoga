@@ -1,27 +1,30 @@
-.image-container {
+.image-container, .button-container {
   display: flex;
+}
+
+.image-container {
   justify-content: center;
   margin-top: 10em;
   margin-bottom: 3em;
 }
 
-.image {
+.image-container__image {
   width: 10%;
   min-width: 100px;
 }
 
 .button-container {
-  display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.button-gradient {
+.button-container__button--gradient {
   background-image: linear-gradient(#B0F5D6, #87EBD6);
   padding: 0em;
   width: 6em;
+  font-size: 15px;
 }
 
-.button-gradient:hover {
+.button-container__button--gradient:hover {
   box-shadow: 0 1px 2px #aaaaaa, 0 5px 10px 0 #aaaaaa;
 }

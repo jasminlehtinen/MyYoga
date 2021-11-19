@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http'
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component'
 import { MainComponent } from './main/main.component'
@@ -10,13 +10,17 @@ import { RegisterComponent } from './register/register.component'
 import { DisplayPosesComponent } from './display-poses/display-poses.component'
 import { FormControlComponent } from './form-control/form-control.component'
 import { UpdatePoseComponent } from './update-pose/update-pose.component'
+import { ProfileViewComponent } from './profile-view/profile-view.component'
 
 import { AppRoutingModule } from './app-routing.module'
-import { PosesService } from './_services/poses.service'
-import { EnvServiceProvider } from './_services/env.service.provider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { PosesService } from './_services/poses.service'
+import { ValidateEmailDirective } from './validate-email.directive'
 
-import { MatButtonModule } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input'
+import { MatTableModule } from '@angular/material/table'
 
 @NgModule({
   declarations: [
@@ -26,17 +30,23 @@ import { MatButtonModule } from '@angular/material/button';
     RegisterComponent,
     DisplayPosesComponent,
     FormControlComponent,
-    UpdatePoseComponent
+    UpdatePoseComponent,
+    ProfileViewComponent,
+    ValidateEmailDirective
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule
   ],
-  providers: [PosesService, EnvServiceProvider],
+  providers: [PosesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,59 +1,88 @@
 <div>
-  <h2>Register</h2>
-  <form
-    *ngIf='!isSuccessful'
-    name='form'
-    (ngSubmit)='f.form.valid && onSubmit()'
-    #f='ngForm'
-    novalidate
-  >
-    <div>
-      <label for='email'>Email</label>
-      <input
-        type='email'
-        name='email'
-        [(ngModel)]='form.email'
-        required
-        #email='ngModel'
-      />
-      <div 
-        role='alert'
-        *ngIf='f.submitted && email.invalid'
-      >
-        Email required!
-      </div>
-    </div>
-    <div>
-      <label for='password'>Password</label>
-      <input
-        type='password'
-        name='password'
-        [(ngModel)]='form.password'
-        required
-        #password='ngModel'
-      />
-      <div 
-        role='alert' 
-        *ngIf='f.submitted && password.invalid'
-      >
-        Password required!
-      </div>
-    </div>
-    <div>
-      <button>Sign Up</button>
-    </div>
-    <div
-      role='alert'
-      *ngIf='f.submitted && signUpFailed'
+  <div class='register-container'>
+    <h2 class='register-container__header'>Register</h2>
+    <form
+      name='form'
+      class='register-container__form'
+      *ngIf='!isSuccessful'
+      [formGroup]='userForm'
+      novalidate
     >
-      Signup failed: {{ errorMessage }}
+      <div>
+        <!-- Email -->
+        <mat-form-field appearance='outline'>
+          <mat-label for='email'>Email</mat-label>
+          <input
+            [class.is-invalid] = "userForm.get('email').invalid && userForm.get('email').touched"
+            name='email'
+            type='email'
+            matInput placeholder='example@email.com'
+            formControlName='email'
+            appValidateEmail
+          />
+          <div 
+            role='alert'
+            *ngIf='email.touched && email.invalid'
+          >
+            <small *ngIf='email.errors?.required'>
+              Email required!
+            </small>
+            <small *ngIf='email.errors?.emailTaken'>
+              Email already exists!
+            </small>
+          </div>
+        </mat-form-field>
+      </div>
+      <div>
+        <!-- Password -->
+        <mat-form-field appearance='outline'>
+          <mat-label for='password'>Password</mat-label>
+          <input
+            [class.is-invalid] = "userForm.get('password').invalid && userForm.get('password').touched"
+            name='password'
+            type='password'
+            matInput placeholder='***'
+            formControlName='password'
+          />
+          <div 
+            role='alert' 
+            *ngIf='password.touched && password.invalid'
+          >
+            <small *ngIf='password.errors?.required'>
+              Passworld required!
+            </small>
+          </div>
+        </mat-form-field>
+      </div>
+      <div>
+        <!-- Sign up button -->
+        <button 
+          (click)='onSubmit()' 
+          mat-flat-button 
+          class='register-container__button--gradient'
+          [disabled]='userForm.invalid'
+        >Sign Up</button>
+      </div>
+      <div
+        role='alert'
+        *ngIf='userForm.submitted && signUpFailed'
+      >
+        Signup failed: {{ errorMessage }}
+      </div>
+    </form>
+    <div 
+      class='register-confirmation'
+      role='alert'
+      *ngIf='isSuccessful'
+    >
+      <p>Your registration is successful!</p>
+      <!-- Direct to login -->
+      <button 
+        (click)='toLogin()'
+        mat-flat-button 
+        class='register-container__button--gradient'
+      >Login
+      </button>
     </div>
-  </form>
-  <div 
-    role='alert'
-    *ngIf='isSuccessful'
-  >
-    Your registration is successful!
-    <button (click)='toLogin()'>Login</button>
   </div>
 </div>

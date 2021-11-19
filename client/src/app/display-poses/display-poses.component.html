@@ -1,30 +1,57 @@
-<h1>Your Yoga Poses</h1>
-
-<p>User {{this.user.email}}</p>
-
-<table>
-  <tr>
-    <th>ID</th>
-    <th>English Name</th>
-    <th>Sanskrit Name</th>
-    <th>Type</th>
-    <th>Difficulty</th>
-    <th>Link</th>
-    <th>User</th>
-  </tr>
-  <tr *ngFor='let pose of poses'>
-    <th>{{pose.id}}</th>
-    <th>{{pose.englishname}}</th>
-    <th>{{pose.sanskritname}}</th>
-    <th>{{pose.type}}</th>
-    <th>{{pose.difficulty}}</th>
-    <th>{{pose.link}}</th>
-    <th>{{pose.user_email}}</th>
-    <button (click)='deletePose(pose)'>Delete</button>
-    <button (click)='updatePose(pose)'>Update</button>
-  </tr>
-</table>
-
-<app-form-control [isAdd]='isAdd'></app-form-control>
-
-<button (click)='toLogout()'>Logout</button>
+<div>
+  <mat-table [dataSource]='poses'>
+    <!-- English name -->
+    <ng-container matColumnDef='englishName'>
+      <mat-header-cell *matHeaderCellDef>English name</mat-header-cell>
+      <mat-cell *matCellDef='let pose'>{{pose.englishname}}</mat-cell>
+    </ng-container>
+    <!-- Sanskrit name -->
+    <ng-container matColumnDef='sanskritName'>
+      <mat-header-cell mat-header-cell *matHeaderCellDef>Sanskrit name</mat-header-cell>
+      <mat-cell mat-cell *matCellDef='let pose'>{{pose.sanskritname}}</mat-cell>
+    </ng-container>
+    <!-- Type -->
+    <ng-container matColumnDef='type'>
+      <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+      <mat-cell *matCellDef='let pose'>{{pose.type}}</mat-cell>
+    </ng-container>
+    <!-- Difficulty -->
+    <ng-container matColumnDef='difficulty'>
+      <mat-header-cell *matHeaderCellDef>Difficulty</mat-header-cell>
+      <mat-cell *matCellDef='let pose'>{{pose.difficulty}}</mat-cell>
+    </ng-container>
+    <!-- Link -->
+    <ng-container matColumnDef='link'>
+      <mat-header-cell *matHeaderCellDef>Link</mat-header-cell>
+      <mat-cell *matCellDef='let pose'>{{pose.link}}</mat-cell>
+    </ng-container>
+    <!-- Delete button -->
+    <ng-container matColumnDef='delete'>
+      <mat-header-cell *matHeaderCellDef></mat-header-cell> 
+      <mat-cell *matCellDef='let pose'> 
+        <button 
+        (click)='deletePose(pose)' 
+        mat-flat-button
+        class='mat-table__button--red-gradient'
+        >
+          Delete
+        </button> 
+      </mat-cell>
+    </ng-container>
+    <!-- Update button -->
+    <ng-container matColumnDef='update'>
+      <mat-header-cell *matHeaderCellDef></mat-header-cell> 
+      <mat-cell *matCellDef='let pose'> 
+        <button 
+        (click)='updatePose(pose)' 
+        mat-flat-button
+        class='mat-table__button--green-gradient'
+        >
+          Update
+        </button> 
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef='displayedColumns'></mat-header-row>
+    <mat-row *matRowDef='let pose; columns: displayedColumns'></mat-row>
+  </mat-table>
+</div>

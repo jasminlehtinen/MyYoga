@@ -2,8 +2,8 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core'
 import { Observable, throwError } from 'rxjs'
 import { catchError } from 'rxjs/operators'
-import { IPoses } from '../poses'
 import { TokenStorageService } from './token-storage.service'
+import { IPoses } from '../poses'
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,7 @@ export class PosesService {
 
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService) { }
 
+  // Get all user's poses from the db
   getPoses(): Observable<IPoses[]> {
     let user = this.tokenStorage.getUser()
 
@@ -29,6 +30,7 @@ export class PosesService {
                     .pipe(catchError(this.errorHandler))
   }
 
+  // Get a specific pose from the db
   getPoseById(id): Observable<IPoses[]> {
     let user = this.tokenStorage.getUser()
 
@@ -44,6 +46,7 @@ export class PosesService {
                     .pipe(catchError(this.errorHandler))
   }
 
+  // Add a new pose to the db
   addPose(pose): Observable<IPoses[]> {
     let user = this.tokenStorage.getUser()
 
@@ -65,6 +68,7 @@ export class PosesService {
                     .pipe(catchError(this.errorHandler))
   }
 
+  // Send the updated pose to the db
   updatePose(id, pose): Observable<IPoses[]> {
     let user = this.tokenStorage.getUser()
 
@@ -86,6 +90,7 @@ export class PosesService {
                     .pipe(catchError(this.errorHandler))
   }
 
+  // Delete a pose from the db
   deletePose(id): Observable<IPoses[]> {
     let user = this.tokenStorage.getUser()
 

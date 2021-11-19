@@ -11,14 +11,17 @@ export class TokenStorageService {
   constructor() { }
 
   signOut(): void {
+    // Clear session storage when an user logs out
     window.sessionStorage.clear()
   }
 
+  // Save token for authorization
   public saveToken(token: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY)
     window.sessionStorage.setItem(TOKEN_KEY, token)
   }
 
+  // Get active token from session storage
   public getToken(): string {
     return sessionStorage.getItem(TOKEN_KEY)
   }

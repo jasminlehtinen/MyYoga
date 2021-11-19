@@ -1,22 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
-import { DisplayPosesComponent } from './display-poses.component'
+import { ProfileViewComponent } from './profile-view.component'
 
-describe('PosesComponent', () => {
-  let component: DisplayPosesComponent
-  let fixture: ComponentFixture<DisplayPosesComponent>
+describe('ProfileViewComponent', () => {
+  let component: ProfileViewComponent
+  let fixture: ComponentFixture<ProfileViewComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DisplayPosesComponent ]
+      declarations: [ ProfileViewComponent ]
     })
     .compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DisplayPosesComponent)
+    fixture = TestBed.createComponent(ProfileViewComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
-  })
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy()

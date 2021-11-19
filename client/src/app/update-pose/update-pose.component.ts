@@ -9,9 +9,11 @@ import { TokenStorageService } from '../_services/token-storage.service'
   styleUrls: ['./update-pose.component.css']
 })
 export class UpdatePoseComponent implements OnInit {
-  user: any
+
   public poses = []
+  user: any
   isUpdate = true
+  displayedColumns = ['englishName', 'sanskritName', 'type', 'difficulty', 'link', 'back']
 
   constructor(private route: ActivatedRoute, private router: Router, private tokenStorage: TokenStorageService, private _poseService: PosesService) { }
 
