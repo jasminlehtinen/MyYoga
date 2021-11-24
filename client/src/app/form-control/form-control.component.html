@@ -1,4 +1,4 @@
-<div>
+<div class='form-container'>
   <h3 *ngIf='isAdd'>Add a new yoga pose</h3>
   <h3 *ngIf='isUpdate'>Update your yoga pose</h3>
   <form
@@ -10,7 +10,7 @@
   >
     <div>
       <!-- English name -->
-      <mat-form-field appearance='standard'>
+      <mat-form-field appearance='outline'>
         <mat-label for='englishname'>English Name</mat-label>
         <input
           name='englishname'
@@ -30,7 +30,7 @@
     </div>
     <div>
       <!-- Sanskrit name -->
-      <mat-form-field appearance='standard'>
+      <mat-form-field appearance='outline'>
         <mat-label for='sanskritname'>Sanskrit name</mat-label>
         <input
           name='sanskritname'
@@ -43,7 +43,7 @@
     </div>
     <div>
       <!-- Type -->
-      <mat-form-field appearance='standard'>
+      <mat-form-field appearance='outline'>
         <mat-label for='type'>Type</mat-label>
         <input
           name='type'
@@ -63,7 +63,7 @@
     </div>
     <div>
       <!-- Difficulty -->
-      <mat-form-field appearance='standard'>
+      <mat-form-field appearance='outline'>
         <mat-label for='difficulty'>Difficulty</mat-label>
         <input
           name='difficulty'
@@ -83,7 +83,7 @@
     </div>
     <div>
       <!-- Link -->
-      <mat-form-field appearance='standard'>
+      <mat-form-field appearance='outline'>
         <mat-label for='link'>Link</mat-label>
         <input
           name='link'
@@ -106,7 +106,7 @@
       <button 
         *ngIf='isAdd'
         mat-flat-button
-        class='register-container__button--gradient'
+        class='form-container__button--gradient'
       >
         Add
       </button>
@@ -114,7 +114,7 @@
       <button 
         *ngIf='isUpdate'
         mat-flat-button
-        class='register-container__button--gradient'
+        class='form-container__button--gradient'
       >
         Update
       </button>

@@ -1,3 +1,12 @@
+.page__margin {
+  margin-top: 2em;
+  margin-left: 100px;
+}
+
+.mat-table {
+  margin-bottom: 100px;
+}
+
 .mat-table__button--gradient {
   background-image: linear-gradient(#B7CEAD, #C8DAC0);
   display: flex;

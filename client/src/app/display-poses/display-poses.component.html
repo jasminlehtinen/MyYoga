@@ -1,32 +1,32 @@
 <div>
   <mat-table [dataSource]='poses'>
     <!-- English name -->
-    <ng-container matColumnDef='englishName'>
+    <div matColumnDef='englishName'>
       <mat-header-cell *matHeaderCellDef>English name</mat-header-cell>
       <mat-cell *matCellDef='let pose'>{{pose.englishname}}</mat-cell>
-    </ng-container>
+    </div>
     <!-- Sanskrit name -->
-    <ng-container matColumnDef='sanskritName'>
+    <div matColumnDef='sanskritName'>
       <mat-header-cell mat-header-cell *matHeaderCellDef>Sanskrit name</mat-header-cell>
       <mat-cell mat-cell *matCellDef='let pose'>{{pose.sanskritname}}</mat-cell>
-    </ng-container>
+    </div>
     <!-- Type -->
-    <ng-container matColumnDef='type'>
+    <div matColumnDef='type'>
       <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
       <mat-cell *matCellDef='let pose'>{{pose.type}}</mat-cell>
-    </ng-container>
+    </div>
     <!-- Difficulty -->
-    <ng-container matColumnDef='difficulty'>
+    <div matColumnDef='difficulty'>
       <mat-header-cell *matHeaderCellDef>Difficulty</mat-header-cell>
       <mat-cell *matCellDef='let pose'>{{pose.difficulty}}</mat-cell>
-    </ng-container>
+    </div>
     <!-- Link -->
-    <ng-container matColumnDef='link'>
+    <div matColumnDef='link'>
       <mat-header-cell *matHeaderCellDef>Link</mat-header-cell>
       <mat-cell *matCellDef='let pose'>{{pose.link}}</mat-cell>
-    </ng-container>
+    </div>
     <!-- Delete button -->
-    <ng-container matColumnDef='delete'>
+    <div matColumnDef='delete'>
       <mat-header-cell *matHeaderCellDef></mat-header-cell> 
       <mat-cell *matCellDef='let pose'> 
         <button 
@@ -37,9 +37,9 @@
           Delete
         </button> 
       </mat-cell>
-    </ng-container>
+    </div>
     <!-- Update button -->
-    <ng-container matColumnDef='update'>
+    <div matColumnDef='update'>
       <mat-header-cell *matHeaderCellDef></mat-header-cell> 
       <mat-cell *matCellDef='let pose'> 
         <button 
@@ -50,7 +50,7 @@
           Update
         </button> 
       </mat-cell>
-    </ng-container>
+    </div>
     <mat-header-row *matHeaderRowDef='displayedColumns'></mat-header-row>
     <mat-row *matRowDef='let pose; columns: displayedColumns'></mat-row>
   </mat-table>
