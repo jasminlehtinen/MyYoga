@@ -15,7 +15,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  // Send login information to the db
+  // Sends a POST request to authenticate the user's credentials
   login(credentials): Observable<any> {
     return this.http.post(AUTH_API + 'login', {
       email: credentials.email,
@@ -23,7 +23,7 @@ export class AuthService {
     }, httpOptions)
   }
 
-  // Send register information to the db to create a new user
+  // Sends a POST request to create a new user with the user information
   register(user): Observable<any> {
     return this.http.post(AUTH_API + 'signup', {
       email: user.email,

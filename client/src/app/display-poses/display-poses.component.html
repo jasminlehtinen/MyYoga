@@ -25,27 +25,21 @@
       <mat-header-cell *matHeaderCellDef>Link</mat-header-cell>
       <mat-cell *matCellDef='let pose'>{{pose.link}}</mat-cell>
     </div>
-    <!-- Delete button -->
-    <div matColumnDef='delete'>
+    <!-- Delete and update buttons -->
+    <div matColumnDef='buttons'>
       <mat-header-cell *matHeaderCellDef></mat-header-cell> 
       <mat-cell *matCellDef='let pose'> 
         <button 
         (click)='deletePose(pose)' 
         mat-flat-button
-        class='mat-table__button--red-gradient'
+        class='mat-table__button--red'
         >
           Delete
         </button> 
-      </mat-cell>
-    </div>
-    <!-- Update button -->
-    <div matColumnDef='update'>
-      <mat-header-cell *matHeaderCellDef></mat-header-cell> 
-      <mat-cell *matCellDef='let pose'> 
         <button 
         (click)='updatePose(pose)' 
         mat-flat-button
-        class='mat-table__button--green-gradient'
+        class='mat-table__button--green'
         >
           Update
         </button> 
@@ -55,3 +49,4 @@
     <mat-row *matRowDef='let pose; columns: displayedColumns'></mat-row>
   </mat-table>
 </div>
+ 

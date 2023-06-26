@@ -1,3 +1,4 @@
+// Interface for poses
 export interface IPoses {
   id: number
   englishname: string

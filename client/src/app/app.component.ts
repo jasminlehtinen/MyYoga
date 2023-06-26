@@ -9,17 +9,19 @@ import { TokenStorageService } from './_services/token-storage.service'
 export class AppComponent implements OnInit {
   title = 'My Yoga'
 
+  // By default, returns false when no one has logged in 
   isLoggedIn = false
   email: string
 
   constructor(private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
+    // Checks if there is a valid token
     this.isLoggedIn = !!this.tokenStorageService.getToken()
 
+    // When there's a valid token, user information is retrieved
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser()
-
       this.email = user.email
     }
   }

@@ -1,28 +1,29 @@
-<div class='login-container'>
-  <h2 class='login-container__header'>Login</h2>
+<div class='content-box'>
+  <h2 class='form__header'>Login</h2>
+  <!-- Form -->
+  <!-- (ngSubmit)='f.form.valid && onSubmit()' -->
   <form 
-    class='login-container__form'
-    *ngIf='!isLoggedIn'
     name='form'
-    (ngSubmit)='f.form.valid && onSubmit()'
-    #f='ngForm'
+    *ngIf='!isLoggedIn'
+
+    [formGroup]='userForm'
     novalidate
   >
     <div>
       <!-- Email -->
       <mat-form-field appearance='outline'>
         <mat-label for='email'>Email</mat-label>
+        <!-- [(ngModel)]='form.email'; #email='ngModel' -->
         <input 
-          matInput placeholder='example@email.com'
-          type='email' 
           name='email'
-          [(ngModel)]='form.email'
-          required
-          #email='ngModel'
+          type='email' 
+          formControlName='email'
+          matInput placeholder='example@email.com'
+          [class.is-invalid]="userForm.get('email').invalid && userForm.get('email').touched"
         />
         <div
           role='alert'
-          *ngIf='f.submitted && email.invalid'
+          *ngIf='email.touched && email.invalid'
         >
           Email required!
         </div>
@@ -32,17 +33,17 @@
       <!-- Password -->
       <mat-form-field appearance='outline'>
         <mat-label for='password'>Password</mat-label>
+        <!-- [(ngModel)]='form.password'; #password='ngModel' -->
         <input 
-          matInput placeholder='***'
-          type='password' 
           name='password'
-          [(ngModel)]='form.password'
-          required
-          #password='ngModel'
+          type='password'
+          formControlName='password'
+          matInput placeholder='***'
+          [class.is-invalid]="userForm.get('password').invalid && userForm.get('password').touched"
         />
         <div
           role='alert'
-          *ngIf='f.submitted && password.invalid'
+          *ngIf='password.touched && password.invalid'
         >
           Password required!
         </div>
@@ -50,14 +51,20 @@
     </div>
     <div>
       <!-- Login button -->
-      <button mat-flat-button class='login-container__button--gradient'>Login</button>
+      <button 
+        mat-flat-button
+        (click)='onSubmit()'
+        [disabled]='userForm.invalid'
+      >
+        Login
+      </button>
     </div>
+    <!-- Error message -->
     <div
       role='alert'
-      *ngIf='f.submitted && isLoginFailed'
+      *ngIf='userForm.submitted && isLoginFailed'
     >
       Login failed: {{ errorMessage }}
     </div>
   </form>
 </div>
-

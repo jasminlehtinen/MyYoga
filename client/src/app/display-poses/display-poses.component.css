@@ -1,29 +1,17 @@
-th {
-  font-weight: normal;
-}
-
-.matColumnDef {
-  margin: 200px;
-}
-
-.mat-table__button-container {
-  padding-left: 200px;
-}
-
+/* Button layout */
 .mat-flat-button {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 22px;
-  height: 20px;
+  height: 21px;
   width: 25px;
   font-size: 12px;
+  margin: 5px;
 }
 
-.mat-table__button--green-gradient {
-  background-image: linear-gradient(#B7CEAD, #C8DAC0);
-}
+/* Delete-button color */
+.mat-table__button--red { background-image: linear-gradient(#E8A999, #FCBEAF); }
 
-.mat-table__button--red-gradient {
-  background-image: linear-gradient(#E8A999, #FCBEAF);
-}
+/* Update-button color */
+.mat-table__button--green { background-image: linear-gradient(#B7CEAD, #C8DAC0); }

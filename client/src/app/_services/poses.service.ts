@@ -14,9 +14,9 @@ export class PosesService {
 
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService) { }
 
-  // Get all user's poses from the db
+  // Get all user's saved poses
   getPoses(): Observable<IPoses[]> {
-    let user = this.tokenStorage.getUser()
+    let user = this.tokenStorage.getUser() // Get the current user
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -26,13 +26,14 @@ export class PosesService {
       })
     }
 
+    // Sends a GET request with the current user's information and authorization to retrieve user's saved poses
     return this.http.get<IPoses[]>(this._url + 'poses', httpOptions)
                     .pipe(catchError(this.errorHandler))
   }
 
-  // Get a specific pose from the db
+  // Get a specific pose with an ID
   getPoseById(id): Observable<IPoses[]> {
-    let user = this.tokenStorage.getUser()
+    let user = this.tokenStorage.getUser() // Get the current user
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -42,13 +43,14 @@ export class PosesService {
       })
     }
 
+    // Sends a GET request with the current user's information and authorization to retrieve a specific pose that the user has saved
     return this.http.get<IPoses[]>(this._url + 'poses' + '/' + id, httpOptions)
                     .pipe(catchError(this.errorHandler))
   }
 
-  // Add a new pose to the db
+  // Add a new pose
   addPose(pose): Observable<IPoses[]> {
-    let user = this.tokenStorage.getUser()
+    let user = this.tokenStorage.getUser() // Get the current user
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -57,6 +59,7 @@ export class PosesService {
       })
     }
 
+    // Sends a POST request with the new pose and necessary user information and authorization
     return this.http.post<IPoses[]>(this._url + 'poses', {
                       englishname: pose.englishname,
                       sanskritname: pose.sanskritname,
@@ -68,9 +71,9 @@ export class PosesService {
                     .pipe(catchError(this.errorHandler))
   }
 
-  // Send the updated pose to the db
+  // Send the user's updated pose
   updatePose(id, pose): Observable<IPoses[]> {
-    let user = this.tokenStorage.getUser()
+    let user = this.tokenStorage.getUser() // Get the current user
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -80,6 +83,7 @@ export class PosesService {
       }),
     } 
 
+    // Sends a PUT request with the new pose data for a specific ID and user authorization
     return this.http.put<IPoses[]>(this._url + 'poses' + '/' + id, {
                       englishname: pose.englishname,
                       sanskritname: pose.sanskritname,
@@ -90,9 +94,9 @@ export class PosesService {
                     .pipe(catchError(this.errorHandler))
   }
 
-  // Delete a pose from the db
+  // Delete a pose
   deletePose(id): Observable<IPoses[]> {
-    let user = this.tokenStorage.getUser()
+    let user = this.tokenStorage.getUser() // Get the current user
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -101,11 +105,13 @@ export class PosesService {
       }),
     }
 
+    // Sends a DELETE request with the specific ID and user authorization
     return this.http.delete<IPoses[]>(this._url + 'poses' + '/' + id, httpOptions)
                     .pipe(catchError(this.errorHandler))
 
   }
 
+  // Handles the error message, if there's an error with any of the requests
   errorHandler(error: HttpErrorResponse) {
     return throwError(error.message || 'Server Error')
   }

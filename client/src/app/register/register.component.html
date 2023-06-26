@@ -1,6 +1,7 @@
 <div>
   <div class='register-container'>
     <h2 class='register-container__header'>Register</h2>
+    <!-- Reactive form -->
     <form
       name='form'
       class='register-container__form'
@@ -13,12 +14,11 @@
         <mat-form-field appearance='outline'>
           <mat-label for='email'>Email</mat-label>
           <input
-            [class.is-invalid] = "userForm.get('email').invalid && userForm.get('email').touched"
             name='email'
             type='email'
-            matInput placeholder='example@email.com'
             formControlName='email'
-            appValidateEmail
+            matInput placeholder='example@email.com'
+            [class.is-invalid]="userForm.get('email').invalid && userForm.get('email').touched"
           />
           <div 
             role='alert'
@@ -38,11 +38,11 @@
         <mat-form-field appearance='outline'>
           <mat-label for='password'>Password</mat-label>
           <input
-            [class.is-invalid] = "userForm.get('password').invalid && userForm.get('password').touched"
             name='password'
             type='password'
-            matInput placeholder='***'
             formControlName='password'
+            matInput placeholder='***'
+            [class.is-invalid]="userForm.get('password').invalid && userForm.get('password').touched"
           />
           <div 
             role='alert' 
@@ -57,12 +57,15 @@
       <div>
         <!-- Sign up button -->
         <button 
-          (click)='onSubmit()' 
           mat-flat-button 
+          (click)='onSubmit()'
           class='register-container__button--gradient'
           [disabled]='userForm.invalid'
-        >Sign Up</button>
+        >
+          Sign Up
+        </button>
       </div>
+      <!-- Error message -->
       <div
         role='alert'
         *ngIf='userForm.submitted && signUpFailed'

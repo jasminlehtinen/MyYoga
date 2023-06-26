@@ -1,24 +1,24 @@
 const db = require('./dbconfig')
 const bcrypt = require('bcrypt')
 
-// Get user by id
+// Get user by email
 const getUser = (email, next) => {
   const query = {
     text: 'SELECT * FROM users WHERE email = $1',
     values: [email]
   }
 
-  db.query(query, (err, res) => {
+  db.query(query, (err, result) => {
     if (err) {
       return console.error('Error executing query', err.stack)
     } else {
-      next(res.rows)
+      next(result.rows)
     }
   })
 }
 
 // Get all users
-const getAllUsers = (req, res) => {
+const getAllUsers = (res) => {
   const query = {
     text: 'SELECT * FROM users'
   }
@@ -34,10 +34,12 @@ const getAllUsers = (req, res) => {
 
 // Create a new user
 const addUser = (req, res) => {
+  // Extract information from the request body
   const user = req.body
   const email = req.body.email
   const password = req.body.password
 
+  // Generates a secure, salted hash of a password, which is then stored in the database
   const saltRounds = 10
   const salt = bcrypt.genSaltSync(saltRounds)
   const hashPassword = bcrypt.hashSync(password, salt)
@@ -47,13 +49,13 @@ const addUser = (req, res) => {
     values: [email, hashPassword]
   }
 
-  db.query(query, (err, res) => {
+  db.query(query, (err) => {
     if (err) {
       return console.error('Error executing query', err.stack)
+    } else {
+      res.json(user)
     }
   })
-
-  res.json(user)
 }
 
 module.exports = {

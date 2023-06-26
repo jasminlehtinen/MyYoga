@@ -13,10 +13,12 @@ export class MainComponent {
   ngOnInit() {
   }
 
+  // Navigates the user to the login page
   toLogin() {
     this.router.navigate(['/login'])
   }
 
+  // Navigates the user to the register page
   toRegister() {
     this.router.navigate(['/signup'])
   }

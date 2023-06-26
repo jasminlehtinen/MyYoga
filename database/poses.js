@@ -1,5 +1,6 @@
 const db = require('./dbconfig')
 
+// Get all user's poses
 const getAllPoses = (req, res) => {
   const query = {
     text: 'SELECT * FROM poses WHERE user_email = $1',
@@ -15,7 +16,7 @@ const getAllPoses = (req, res) => {
   })
 }
 
-// Get a pose by an id
+// Get pose by an ID
 const getPoseById = (req, res) => {
   const query = {
     text: 'SELECT * FROM poses WHERE id = $1',
@@ -45,33 +46,34 @@ const addPose = (req, res) => {
     values: [newPose.englishname, newPose.sanskritname, newPose.type, newPose.difficulty, newPose.link, newPose.user_email]
   }
 
-  db.query(query, (err, res) => {
+  db.query(query, (err) => {
     if (err) {
       return console.error('Error executing the query', err.stack)
+    } else {
+      res.json(newPose)
     }
   })
-
-  res.json(newPose)
 }
 
-// Delete a pose
+// Delete pose
 const deletePose = (req, res) => {
   const query = {
     text: 'DELETE FROM poses WHERE id = $1',
     values: [req.params.id]
   }
 
-  db.query(query, (err, res) => {
+  db.query(query, (err) => {
     if (err) {
       return console.error('Error executing the query', err.stack)
+    } else {
+      res.status(204).end()
     }
   })
-
-  res.status(204).end()
 }
 
-// Update a pose
+// Update pose
 const updatePose = (req, res) => {
+  // Extract information from the request body
   const updatedPose = req.body
 
   const query = {
@@ -79,13 +81,13 @@ const updatePose = (req, res) => {
     values: [updatedPose.englishname, updatedPose.sanskritname, updatedPose.type, updatedPose.difficulty, updatedPose.link, req.params.id]
   }
 
-  db.query(query, (err, res) => {
+  db.query(query, (err) => {
     if (err) {
       return console.error('Error executing the query', err.stack)
+    } else {
+      res.json(updatedPose)
     }
   })
-
-  res.json(updatedPose)
 }
 
 module.exports = {

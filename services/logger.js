@@ -9,8 +9,11 @@ const login = (req, res) => {
   const password = req.body.password
 
   const loginUser = user.getUser(email, (user) => {
+    // Checks if the user exists
     if (user.length > 0) {
+      // Password hash retrieved
       const hashPassword = user[0].password
+      // Creates JSON Web Token for the user
       const token = jwt.sign({userId: email}, process.env.SECRET_KEY)
 
       // Sends the token if password matches
@@ -20,7 +23,7 @@ const login = (req, res) => {
         res.sendStatus(400).end()
       }
     } else {
-      res.sendStatus(400).end()
+      res.sendStatus(404).end()
     }
   })
 }
@@ -29,12 +32,13 @@ const login = (req, res) => {
 const authenticate = (req, res, next) => {
   const token = req.header('Authorization')
 
+  // Status code 400 if token variable is missing
   if (!token) {
     res.sendStatus(400).end()
   }
 
   // Verify the received token
-  jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+  jwt.verify(token, process.env.SECRET_KEY, (err) => {
     if (err) {
       res.sendStatus(400).end()
     } else {

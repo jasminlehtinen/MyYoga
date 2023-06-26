@@ -1,30 +1,23 @@
-.page__margin {
-  margin-left: 100px;
-}
+/* Margin for the whole component */
+.profile-view { margin-left: 50px; }
 
+/* Info section layout */
 .info {
   flex-direction: row;
   justify-content: flex-start;
 }
 
-.info__header {
-  font-weight: normal;
-}
-
-.info, .info__logout-button--gradient {
+/* Info section and logout button layout */
+.info, .mat-flat-button {
   display: flex;
   align-items: center;
 }
 
-.info, .info__user, .info__logout-button--gradient, .poses-container {
-  margin: 2em;
-}
+/* Overrides the default font weight */
+.info__header { font-weight: normal; }
 
-.info__user {
-  margin-left: 10em;
-}
-
-.info__logout-button--gradient {
+/* Logout button layout and design */
+.mat-flat-button {
   background-image: linear-gradient(#E8A999, #FCBEAF);
   justify-content: center;
   border-radius: 22px;
@@ -33,18 +26,13 @@
   font-size: 13px;
 }
 
-.info__logout-button--gradient:hover {
-  box-shadow: 0 1px 2px #aaaaaa, 0 5px 10px 0 #aaaaaa;
-}
+/* Logout button hover effect */
+.mat-flat-button:hover { box-shadow: 0 1px 2px #aaaaaa, 0 5px 10px 0 #aaaaaa; }
 
-.poses-container__button-container {
-  margin-bottom: 2em;
-}
+/* Content button focus effect */
+.mat-stroked-button:focus { background-color: #86BDAF; }
 
-.poses-container__button:focus {
-  background-color: #86BDAF;
-}
-
-.poses-container__button--left-margin {
-  margin-left: 20px;
-}
+/* Specific margin settings */
+.info, .info__user, .mat-flat-button, .content { margin: 2em; }
+.info__user { margin-left: 10em; }
+.button-container { margin-bottom: 2em; }
