@@ -2,6 +2,7 @@
   <!-- Header conditionally rendered -->
   <h3 *ngIf='isAdd'>Add a new yoga pose</h3>
   <h3 *ngIf='isUpdate'>Update your yoga pose</h3>
+  <!-- Template-driven form -->
   <form
     name='form'
     *ngIf='!isSuccessful'
@@ -15,7 +16,7 @@
         <mat-label for='englishname'>English Name</mat-label>
         <input
           name='englishname'
-          type='englishname'
+          type='text'
           [(ngModel)]='form.englishname'
           #englishname='ngModel'
           matInput
@@ -35,7 +36,7 @@
         <mat-label for='sanskritname'>Sanskrit name</mat-label>
         <input
           name='sanskritname'
-          type='sanskritname'
+          type='text'
           [(ngModel)]='form.sanskritname'
           #sanskritname='ngModel'
           matInput
@@ -43,17 +44,26 @@
       </mat-form-field>
     </div>
     <div>
+
       <!-- Type -->
       <mat-form-field appearance='outline'>
         <mat-label for='type'>Type</mat-label>
-        <input
+        <mat-select>
+          <mat-option
+            *ngFor='let type of types'
+            [value]='type.value'
+          >
+            {{type.viewValue}}
+          </mat-option>
+        </mat-select>
+        <!--<input
           name='type'
-          type='type'
+          type='text'
           [(ngModel)]='form.type'
           #type='ngModel'
           matInput
           required
-        />
+        />-->
         <div
           role='alert'
           *ngIf='f.submitted && type.invalid'
@@ -61,6 +71,7 @@
           Type required!
         </div>
       </mat-form-field>
+
     </div>
     <div>
       <!-- Difficulty -->
@@ -68,7 +79,7 @@
         <mat-label for='difficulty'>Difficulty</mat-label>
         <input
           name='difficulty'
-          type='difficulty'
+          type='text'
           [(ngModel)]='form.difficulty'
           #difficulty='ngModel'
           matInput
@@ -88,7 +99,7 @@
         <mat-label for='link'>Link</mat-label>
         <input
           name='link'
-          type='link'
+          type='url'
           [(ngModel)]='form.link'
           #link='ngModel'
           matInput
@@ -105,15 +116,17 @@
     <div>
       <!-- Add button -->
       <button 
-        *ngIf='isAdd'
         mat-flat-button
+        *ngIf='isAdd'
+        [disabled]='f.form.valid'
       >
         Add
       </button>
       <!-- Update button -->
       <button 
-        *ngIf='isUpdate'
         mat-flat-button
+        *ngIf='isUpdate'
+        [disabled]='f.form.valid'
       >
         Update
       </button>

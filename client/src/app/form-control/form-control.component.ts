@@ -3,6 +3,12 @@ import { ActivatedRoute } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { PosesService } from '../_services/poses.service'
 
+// TO OWN FILE?
+interface Type {
+  value: string
+  viewValue: string
+}
+
 @Component({
   selector: 'app-form-control',
   templateUrl: './form-control.component.html',
@@ -23,6 +29,12 @@ export class FormControlComponent implements OnInit, OnDestroy {
   isSuccessful = false // Boolean value to prevent the user from submitting the same form, if it was already successfully submitted
   submitFailed = false // Boolean value to track whether the form submission failed or not
   errorMessage = '' // Displays an error message, if there was an error with the form submission
+
+  types: Type[] = [
+    {value: 'beginner', viewValue: 'Beginner'},
+    {value: 'intermediate', viewValue: 'Intermediate'},
+    {value: 'advanced', viewValue: 'Advanced'}
+  ]
 
   constructor(private route: ActivatedRoute, private posesService: PosesService) { }
 

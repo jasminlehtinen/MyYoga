@@ -1,91 +1,87 @@
-<div>
-  <div class='register-container'>
-    <h2 class='register-container__header'>Register</h2>
-    <!-- Reactive form -->
-    <form
-      name='form'
-      class='register-container__form'
-      *ngIf='!isSuccessful'
-      [formGroup]='userForm'
-      novalidate
-    >
-      <div>
-        <!-- Email -->
-        <mat-form-field appearance='outline'>
-          <mat-label for='email'>Email</mat-label>
-          <input
-            name='email'
-            type='email'
-            formControlName='email'
-            matInput placeholder='example@email.com'
-            [class.is-invalid]="userForm.get('email').invalid && userForm.get('email').touched"
-          />
-          <div 
-            role='alert'
-            *ngIf='email.touched && email.invalid'
-          >
-            <small *ngIf='email.errors?.required'>
-              Email required!
-            </small>
-            <small *ngIf='email.errors?.emailTaken'>
-              Email already exists!
-            </small>
-          </div>
-        </mat-form-field>
-      </div>
-      <div>
-        <!-- Password -->
-        <mat-form-field appearance='outline'>
-          <mat-label for='password'>Password</mat-label>
-          <input
-            name='password'
-            type='password'
-            formControlName='password'
-            matInput placeholder='***'
-            [class.is-invalid]="userForm.get('password').invalid && userForm.get('password').touched"
-          />
-          <div 
-            role='alert' 
-            *ngIf='password.touched && password.invalid'
-          >
-            <small *ngIf='password.errors?.required'>
-              Passworld required!
-            </small>
-          </div>
-        </mat-form-field>
-      </div>
-      <div>
-        <!-- Sign up button -->
-        <button 
-          mat-flat-button 
-          (click)='onSubmit()'
-          class='register-container__button--gradient'
-          [disabled]='userForm.invalid'
+<div class='content-box'>
+  <h2 class='form__header'>Register</h2>
+  <!-- Reactive form -->
+  <form
+    name='form'
+    *ngIf='!isSuccessful'
+    [formGroup]='userForm'
+    novalidate
+  >
+    <div>
+      <!-- Email -->
+      <mat-form-field appearance='outline'>
+        <mat-label for='email'>Email</mat-label>
+        <input
+          name='email'
+          type='email'
+          formControlName='email'
+          matInput placeholder='example@email.com'
+          [class.is-invalid]="userForm.get('email').invalid && userForm.get('email').touched"
+        />
+        <div 
+          role='alert'
+          *ngIf='email.touched && email.invalid'
         >
-          Sign Up
-        </button>
-      </div>
-      <!-- Error message -->
-      <div
-        role='alert'
-        *ngIf='userForm.submitted && signUpFailed'
-      >
-        Signup failed: {{ errorMessage }}
-      </div>
-    </form>
-    <div 
-      class='register-confirmation'
-      role='alert'
-      *ngIf='isSuccessful'
-    >
-      <p>Your registration is successful!</p>
-      <!-- Direct to login -->
+          <small *ngIf='email.errors?.required'>
+            Email required!
+          </small>
+          <small *ngIf='email.errors?.emailTaken'>
+            Email already exists!
+          </small>
+        </div>
+      </mat-form-field>
+    </div>
+    <div>
+      <!-- Password -->
+      <mat-form-field appearance='outline'>
+        <mat-label for='password'>Password</mat-label>
+        <input
+          name='password'
+          type='password'
+          formControlName='password'
+          matInput placeholder='***'
+          [class.is-invalid]="userForm.get('password').invalid && userForm.get('password').touched"
+        />
+        <div 
+          role='alert' 
+          *ngIf='password.touched && password.invalid'
+        >
+          <small *ngIf='password.errors?.required'>
+            Passworld required!
+          </small>
+        </div>
+      </mat-form-field>
+    </div>
+    <div>
+      <!-- Sign up button -->
       <button 
-        (click)='toLogin()'
         mat-flat-button 
-        class='register-container__button--gradient'
-      >Login
+        (click)='onSubmit()'
+        [disabled]='userForm.invalid'
+      >
+        Sign Up
       </button>
     </div>
+    <!-- Error message -->
+    <div
+      role='alert'
+      *ngIf='userForm.submitted && signUpFailed'
+    >
+      Signup failed: {{ errorMessage }}
+    </div>
+  </form>
+  <div 
+    class='message'
+    role='alert'
+    *ngIf='isSuccessful'
+  >
+    <p>Your registration is successful!</p>
+    <!-- Button to login page -->
+    <button 
+      mat-flat-button 
+      (click)='toLogin()'
+    >
+      Login
+    </button>
   </div>
 </div>

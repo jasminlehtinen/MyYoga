@@ -1,11 +1,9 @@
 <div class='content-box'>
   <h2 class='form__header'>Login</h2>
-  <!-- Form -->
-  <!-- (ngSubmit)='f.form.valid && onSubmit()' -->
+  <!-- Reactive form -->
   <form 
     name='form'
     *ngIf='!isLoggedIn'
-
     [formGroup]='userForm'
     novalidate
   >
@@ -13,7 +11,6 @@
       <!-- Email -->
       <mat-form-field appearance='outline'>
         <mat-label for='email'>Email</mat-label>
-        <!-- [(ngModel)]='form.email'; #email='ngModel' -->
         <input 
           name='email'
           type='email' 
@@ -33,7 +30,6 @@
       <!-- Password -->
       <mat-form-field appearance='outline'>
         <mat-label for='password'>Password</mat-label>
-        <!-- [(ngModel)]='form.password'; #password='ngModel' -->
         <input 
           name='password'
           type='password'

@@ -1,9 +1,11 @@
 /* Form layout */
-.content-box, form {
+form, .content-box {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+form { padding: 2em; }
 
 /* Form design */
 .content-box {
@@ -16,8 +18,6 @@
 }
 
 .form__header { margin-top: 2em; }
-
-form { padding: 2em; }
 
 /* Button layout and design */
 .mat-flat-button {
