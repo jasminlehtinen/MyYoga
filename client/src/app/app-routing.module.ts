@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
 
-import { MainComponent } from './main/main.component'
-import { LoginComponent } from './login/login.component'
-import { RegisterComponent } from './register/register.component'
-import { ProfileViewComponent } from './profile-view/profile-view.component'
-import { UpdatePoseComponent } from './update-pose/update-pose.component'
+import { MainComponent } from './components/main/main.component'
+import { LoginComponent } from './components/login/login.component'
+import { RegisterComponent } from './components/register/register.component'
+import { ProfileViewComponent } from './components/profile-view/profile-view.component'
+import { UpdatePoseComponent } from './components/update-pose/update-pose.component'
 import { AuthGuardService } from './services/auth-guard.service'
 
 const routes: Routes = [

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { Subscription } from 'rxjs'
-import { PosesService } from '../services/poses.service'
-import { ILevels } from '../interfaces/levels'
+import { PosesService } from '../../services/poses.service'
+import { ILevels } from '../../interfaces/levels'
 
 @Component({
   selector: 'app-form-control',
