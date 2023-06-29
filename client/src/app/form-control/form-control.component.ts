@@ -1,13 +1,8 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { Subscription } from 'rxjs'
-import { PosesService } from '../_services/poses.service'
-
-// TO OWN FILE?
-interface Type {
-  value: string
-  viewValue: string
-}
+import { PosesService } from '../services/poses.service'
+import { ILevels } from '../interfaces/levels'
 
 @Component({
   selector: 'app-form-control',
@@ -30,7 +25,7 @@ export class FormControlComponent implements OnInit, OnDestroy {
   submitFailed = false // Boolean value to track whether the form submission failed or not
   errorMessage = '' // Displays an error message, if there was an error with the form submission
 
-  types: Type[] = [
+  levels: ILevels[] = [
     {value: 'beginner', viewValue: 'Beginner'},
     {value: 'intermediate', viewValue: 'Intermediate'},
     {value: 'advanced', viewValue: 'Advanced'}

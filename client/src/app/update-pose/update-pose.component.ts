@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router'
-import { PosesService } from '../_services/poses.service'
-import { TokenStorageService } from '../_services/token-storage.service'
+import { PosesService } from '../services/poses.service'
+import { TokenStorageService } from '../services/token-storage.service'
 
 @Component({
   selector: 'app-update-pose',

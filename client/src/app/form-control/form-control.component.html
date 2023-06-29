@@ -33,7 +33,7 @@
     <div>
       <!-- Sanskrit name -->
       <mat-form-field appearance='outline'>
-        <mat-label for='sanskritname'>Sanskrit name</mat-label>
+      <mat-label for='sanskritname'>Sanskrit name</mat-label>
         <input
           name='sanskritname'
           type='text'
@@ -44,26 +44,17 @@
       </mat-form-field>
     </div>
     <div>
-
       <!-- Type -->
       <mat-form-field appearance='outline'>
         <mat-label for='type'>Type</mat-label>
-        <mat-select>
-          <mat-option
-            *ngFor='let type of types'
-            [value]='type.value'
-          >
-            {{type.viewValue}}
-          </mat-option>
-        </mat-select>
-        <!--<input
+        <input
           name='type'
           type='text'
           [(ngModel)]='form.type'
           #type='ngModel'
           matInput
           required
-        />-->
+        />
         <div
           role='alert'
           *ngIf='f.submitted && type.invalid'
@@ -71,25 +62,32 @@
           Type required!
         </div>
       </mat-form-field>
-
     </div>
     <div>
-      <!-- Difficulty -->
+      <!-- Level -->
       <mat-form-field appearance='outline'>
-        <mat-label for='difficulty'>Difficulty</mat-label>
-        <input
-          name='difficulty'
+        <mat-label for='level'>Level</mat-label>
+        <mat-select>
+          <mat-option
+            *ngFor='let level of levels'
+            [value]='level.value'
+          >
+            {{level.viewValue}}
+          </mat-option>
+        </mat-select>
+        <!--<input
+          name='level'
           type='text'
-          [(ngModel)]='form.difficulty'
-          #difficulty='ngModel'
+          [(ngModel)]='form.level'
+          #level='ngModel'
           matInput
           required
-        />
+        />-->
         <div
           role='alert'
-          *ngIf='f.submitted && difficulty.invalid'
+          *ngIf='f.submitted && level.invalid'
         >
-          Difficulty required!
+          Level required!
         </div>
       </mat-form-field>
     </div>

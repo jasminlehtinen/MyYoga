@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core'
 import { Observable, throwError } from 'rxjs'
 import { catchError } from 'rxjs/operators'
 import { TokenStorageService } from './token-storage.service'
-import { IPoses } from '../poses'
+import { IPoses } from '../interfaces/poses'
 
 @Injectable({
   providedIn: 'root'

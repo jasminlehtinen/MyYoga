@@ -2,7 +2,7 @@ import { Directive } from '@angular/core'
 import { AbstractControl, NG_ASYNC_VALIDATORS, AsyncValidator, ValidationErrors } from '@angular/forms'
 import { Observable, of } from 'rxjs'
 import { catchError, map } from 'rxjs/operators'
-import { CustomValidationService } from './_services/custom-validation.service'
+import { CustomValidationService } from './services/custom-validation.service'
 
 @Directive({
   selector: '[appValidateEmail]',

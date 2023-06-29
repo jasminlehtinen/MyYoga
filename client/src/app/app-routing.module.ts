@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component'
 import { ProfileViewComponent } from './profile-view/profile-view.component'
 import { UpdatePoseComponent } from './update-pose/update-pose.component'
-import { AuthGuardService } from './_services/auth-guard.service'
+import { AuthGuardService } from './services/auth-guard.service'
 
 const routes: Routes = [
   { path: '', component: MainComponent },

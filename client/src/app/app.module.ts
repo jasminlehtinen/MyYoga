@@ -14,7 +14,7 @@ import { ProfileViewComponent } from './profile-view/profile-view.component'
 
 import { AppRoutingModule } from './app-routing.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { PosesService } from './_services/poses.service'
+import { PosesService } from './services/poses.service'
 import { ValidateEmailDirective } from './validate-email.directive'
 
 import { MatButtonModule } from '@angular/material/button'
