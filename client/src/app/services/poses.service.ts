@@ -64,7 +64,7 @@ export class PosesService {
                       englishname: pose.englishname,
                       sanskritname: pose.sanskritname,
                       type: pose.type,
-                      difficulty: pose.difficulty,
+                      level: pose.level,
                       link: pose.link,
                       user_email: user.email
                     }, httpOptions)
@@ -88,7 +88,7 @@ export class PosesService {
                       englishname: pose.englishname,
                       sanskritname: pose.sanskritname,
                       type: pose.type,
-                      difficulty: pose.difficulty,
+                      level: pose.level,
                       link: pose.link
                     }, httpOptions)
                     .pipe(catchError(this.errorHandler))

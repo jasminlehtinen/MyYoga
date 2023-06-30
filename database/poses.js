@@ -42,8 +42,8 @@ const addPose = (req, res) => {
   const newPose = req.body
 
   const query = {
-    text: 'INSERT INTO poses (englishname, sanskritname, type, difficulty, link, user_email) VALUES ($1, $2, $3, $4, $5, $6)',
-    values: [newPose.englishname, newPose.sanskritname, newPose.type, newPose.difficulty, newPose.link, newPose.user_email]
+    text: 'INSERT INTO poses (englishname, sanskritname, type, level, link, user_email) VALUES ($1, $2, $3, $4, $5, $6)',
+    values: [newPose.englishname, newPose.sanskritname, newPose.type, newPose.level, newPose.link, newPose.user_email]
   }
 
   db.query(query, (err) => {
@@ -77,8 +77,8 @@ const updatePose = (req, res) => {
   const updatedPose = req.body
 
   const query = {
-    text: 'UPDATE poses SET englishname=$1, sanskritname=$2, type=$3, difficulty=$4, link=$5 WHERE id = $6',
-    values: [updatedPose.englishname, updatedPose.sanskritname, updatedPose.type, updatedPose.difficulty, updatedPose.link, req.params.id]
+    text: 'UPDATE poses SET englishname=$1, sanskritname=$2, type=$3, level=$4, link=$5 WHERE id = $6',
+    values: [updatedPose.englishname, updatedPose.sanskritname, updatedPose.type, updatedPose.level, updatedPose.link, req.params.id]
   }
 
   db.query(query, (err) => {

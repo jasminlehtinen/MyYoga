@@ -4,7 +4,7 @@ export interface IPoses {
   englishname: string
   sanskritname: string
   type: string
-  difficulty: string
+  level: string
   link: string
   user_email: string
 }

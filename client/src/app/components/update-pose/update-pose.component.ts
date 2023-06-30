@@ -13,7 +13,7 @@ export class UpdatePoseComponent implements OnInit {
   public poses = []
   user: any
   isUpdate = true
-  displayedColumns = ['englishName', 'sanskritName', 'type', 'difficulty', 'link', 'back']
+  displayedColumns = ['englishName', 'sanskritName', 'type', 'level', 'link', 'back']
 
   constructor(private route: ActivatedRoute, private router: Router, private tokenStorage: TokenStorageService, private _poseService: PosesService) { }
 

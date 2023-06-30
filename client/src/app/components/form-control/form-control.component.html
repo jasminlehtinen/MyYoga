@@ -67,22 +67,20 @@
       <!-- Level -->
       <mat-form-field appearance='outline'>
         <mat-label for='level'>Level</mat-label>
-        <mat-select>
+        <mat-select
+          name='level'
+          [(ngModel)]='form.level'
+          #level='ngModel'
+          required
+        >
+          <mat-select-trigger>{{ form.level }}</mat-select-trigger>
           <mat-option
             *ngFor='let level of levels'
             [value]='level.value'
           >
-            {{level.viewValue}}
+            {{ level.viewValue }}
           </mat-option>
         </mat-select>
-        <!--<input
-          name='level'
-          type='text'
-          [(ngModel)]='form.level'
-          #level='ngModel'
-          matInput
-          required
-        />-->
         <div
           role='alert'
           *ngIf='f.submitted && level.invalid'
@@ -116,7 +114,7 @@
       <button 
         mat-flat-button
         *ngIf='isAdd'
-        [disabled]='f.form.valid'
+        [disabled]='!f.form.valid'
       >
         Add
       </button>
@@ -124,7 +122,7 @@
       <button 
         mat-flat-button
         *ngIf='isUpdate'
-        [disabled]='f.form.valid'
+        [disabled]='!f.form.valid'
       >
         Update
       </button>
