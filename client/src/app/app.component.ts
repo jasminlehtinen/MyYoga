@@ -9,9 +9,8 @@ import { TokenStorageService } from './services/token-storage.service'
 export class AppComponent implements OnInit {
   title = 'My Yoga'
 
-  // By default, returns false when no one has logged in 
-  isLoggedIn = false
-  email: string
+  isLoggedIn = false // By default, returns false when no one has logged in 
+  email: string // Assign the fetched user email
 
   constructor(private tokenStorageService: TokenStorageService) { }
 
@@ -27,7 +26,7 @@ export class AppComponent implements OnInit {
   }
 
   logout(): void {
-    this.tokenStorageService.signOut()
-    window.location.reload()
+    this.tokenStorageService.signOut() // Invokes the signOut method in TokenStorage service
+    window.location.reload() // Reloads the page
   }
 }

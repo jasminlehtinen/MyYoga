@@ -1,10 +1,13 @@
+/* Margin for the whole component */
 .update-pose {
   margin-top: 2em;
   margin-left: 100px;
 }
 
+/* Margin for the table */
 .mat-table { margin-bottom: 100px; }
 
+/* Button layout and design */
 .mat-flat-button {
   background-image: linear-gradient(#B7CEAD, #C8DAC0);
   display: flex;
