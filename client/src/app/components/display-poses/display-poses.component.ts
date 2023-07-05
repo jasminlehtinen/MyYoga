@@ -10,7 +10,7 @@ import { PosesService } from '../../services/poses.service'
 })
 export class DisplayPosesComponent implements OnInit, OnDestroy {
 
-  public poses = [] 
+  public poses = [] // Empty array where fetched poses data is assigned to
   displayedColumns = ['englishName', 'sanskritName', 'type', 'level', 'link', 'buttons'] // Columns displayed on the page
 
   // Subscriptions to getPoses and deletePose API calls

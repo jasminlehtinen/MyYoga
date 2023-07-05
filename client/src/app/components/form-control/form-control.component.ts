@@ -76,7 +76,6 @@ export class FormControlComponent implements OnInit, OnDestroy {
       .subscribe(
         data => { 
           console.log(data)
-          console.log(this.id)
           console.log(this.form)
           this.isSuccessful = true
           this.submitFailed = false

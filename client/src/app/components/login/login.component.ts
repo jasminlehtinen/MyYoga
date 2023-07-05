@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   private loginSub: Subscription
 
   userForm: FormGroup // Creates an instance of the FormGroup
-  //form: any = {} // Empty object to store the user submitted form data in
   isLoggedIn = false // Boolean value to track the user's login status
   isLoginFailed = false // Boolean value to track whether the login attempt has failed or not
   errorMessage = '' // Displays an error message, if there was an error with the login

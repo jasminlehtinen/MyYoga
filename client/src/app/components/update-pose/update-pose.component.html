@@ -1,4 +1,4 @@
-<div class='page__margin'>
+<div class='update-pose'>
   <mat-table [dataSource]='poses'>
     <!-- English name -->
     <div matColumnDef='englishName'>
@@ -32,7 +32,6 @@
         <button 
         (click)='toDisplayPoses()' 
         mat-flat-button
-        class='mat-table__button--gradient'
         >
           Back
         </button> 
@@ -43,4 +42,3 @@
   </mat-table>
   <app-form-control [isUpdate]='isUpdate'></app-form-control>
 </div>
-
