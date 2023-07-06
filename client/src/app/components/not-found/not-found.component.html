@@ -1,0 +1,11 @@
+<div class='not-found'>
+  <h1>404 Not Found</h1>
+  <p>The page you requested could not be found.</p>
+  <!-- User logged in: navigates to the profile page (Profile View component) -->
+  <!-- User not logged in: navigates to the main page (Main component) -->
+  <button
+    routerLink="{{ isLoggedIn ? '/poses' : '' }}"
+  >
+    Back
+  </button>
+</div>

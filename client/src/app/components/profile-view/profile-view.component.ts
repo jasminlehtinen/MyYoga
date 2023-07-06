@@ -29,6 +29,6 @@ export class ProfileViewComponent implements OnInit {
   // Calls the signOut method in the TokenStorage to sign out the user and then redirects to the home page
   toLogout() {
     this.user = this.tokenStorage.signOut()
-    this.router.navigate(['/home'])
+    this.router.navigate([''])
   }
 }
