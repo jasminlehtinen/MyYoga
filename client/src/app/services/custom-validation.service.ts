@@ -18,7 +18,7 @@ export class CustomValidationService {
 
   // Sends a GET request to check if a user already exists (i.e. user email found in the database)
   checkEmail(email: string): Observable<boolean> {
-    return this.http.get(AUTH_API + 'users', httpOptions).pipe(
+    return this.http.get(`${AUTH_API}users`, httpOptions).pipe(
       // Returns a new array containing values that match the email parameter
       map((emails: Array<any>) =>
         emails.filter(emails => emails.email === email),

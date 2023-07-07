@@ -17,7 +17,7 @@ export class AuthService {
 
   // Sends a POST request to authenticate the user's credentials
   login(credentials): Observable<any> {
-    return this.http.post(AUTH_API + 'login', {
+    return this.http.post(`${AUTH_API}login`, {
       email: credentials.email,
       password: credentials.password
     }, httpOptions)
@@ -25,7 +25,7 @@ export class AuthService {
 
   // Sends a POST request to create a new user with the user information
   register(user): Observable<any> {
-    return this.http.post(AUTH_API + 'signup', {
+    return this.http.post(`${AUTH_API}signup`, {
       email: user.email,
       password: user.password
     }, httpOptions)

@@ -7,7 +7,10 @@ import { TokenStorageService } from './token-storage.service'
 })
 export class AuthGuardService implements CanActivate {
 
-  constructor(public token: TokenStorageService, public router: Router) { }
+  constructor(
+    private token: TokenStorageService, 
+    private router: Router
+  ) { }
 
   // If a valid token isn't found, the router sends the user back to login page
   canActivate(): boolean {

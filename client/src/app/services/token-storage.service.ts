@@ -12,14 +12,18 @@ export class TokenStorageService {
   constructor() { }
 
   // Clears the session storage when the user logs out
-  signOut(): void {
-    window.sessionStorage.clear()
+  public signOut(): void {
+    sessionStorage.clear()
   }
 
   // Save the token in the session storage by removing any previous tokens and setting a new one
   public saveToken(token: string): void {
-    window.sessionStorage.removeItem(TOKEN_KEY)
-    window.sessionStorage.setItem(TOKEN_KEY, token)
+    try {
+      sessionStorage.removeItem(TOKEN_KEY)
+      sessionStorage.setItem(TOKEN_KEY, token)
+    } catch (error) {
+      console.error('Error while saving token:', error)
+    }
   }
 
   // Get an active token from the session storage
@@ -29,12 +33,23 @@ export class TokenStorageService {
 
   // Saves the user as a string in the session storage by removing any previous ones and setting a new one
   public saveUser(user): void {
-    window.sessionStorage.removeItem(USER_KEY)
-    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user))
+    try {
+      sessionStorage.removeItem(USER_KEY)
+      sessionStorage.setItem(USER_KEY, JSON.stringify(user))
+    } catch (error) {
+      console.error('Error while saving user:', error)
+    }
   }
 
   // Gets the user from the session storage and returns it as a parsed JSON object
   public getUser(): any {
-    return JSON.parse(sessionStorage.getItem(USER_KEY))
+    const userString = sessionStorage.getItem(USER_KEY)
+
+    try {
+      return JSON.parse(userString)
+    } catch (error) {
+      console.error('Error while parsing a user:', error)
+      return null
+    }
   }
 }
