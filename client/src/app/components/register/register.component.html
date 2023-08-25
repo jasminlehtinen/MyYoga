@@ -17,6 +17,7 @@
           formControlName='email'
           matInput placeholder='example@email.com'
           [class.is-invalid]="userForm.get('email').invalid && userForm.get('email').touched"
+          appValidateEmail
         />
         <div 
           role='alert'
@@ -27,6 +28,9 @@
           </small>
           <small *ngIf='email.errors?.emailTaken'>
             Email already exists!
+          </small>
+          <small *ngIf='email.errors?.serverValidation'>
+            Server error. Please try again later.
           </small>
         </div>
       </mat-form-field>
@@ -57,7 +61,7 @@
       <button 
         mat-flat-button 
         (click)='onSubmit()'
-        [disabled]='userForm.invalid'
+        [disabled]='!userForm.valid'
       >
         Sign Up
       </button>

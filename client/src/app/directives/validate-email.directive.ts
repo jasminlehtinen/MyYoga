@@ -13,12 +13,14 @@ export class ValidateEmailDirective implements AsyncValidator {
 
   constructor(private customValidator: CustomValidationService) { }
 
-  // Check if an user with the same email already exists
-  // Request made in custom validation service
+  // Custom async validator to check if an email is already taken
   validate(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
     return this.customValidator.checkEmail(control.value).pipe(
-      map(isTaken => (isTaken ? null : {emailTaken : true})),
-      catchError(() => of(null))
+      map(isTaken => (isTaken ? null : { emailTaken : true } )),
+      catchError((error) => {
+        console.error('Error in email validation:', error)
+        return of({ serverValidation: true })
+      })
     )
   }
 }

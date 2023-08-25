@@ -22,7 +22,14 @@ export class DisplayPosesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // Subscribes to the getPoses method in the PosesService to get and display all the poses added by the user
     this.getPosesSub = this.poseService.getPoses()
-      .subscribe(data => this.poses = data)
+      .subscribe(
+        data => { 
+          this.poses = data
+        },
+        error => {
+          console.error('Error fetching poses:', error)
+        }
+      )
   }
 
   ngOnDestroy(): void {

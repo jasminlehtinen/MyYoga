@@ -18,7 +18,7 @@ const getUser = (email, next) => {
 }
 
 // Get all users
-const getAllUsers = (res) => {
+const getAllUsers = (req, res) => {
   const query = {
     text: 'SELECT * FROM users'
   }
@@ -27,7 +27,7 @@ const getAllUsers = (res) => {
     if (err) {
       return console.error('Error executing the query', err.stack)
     } else {
-      res.json(result.rows)
+      return res.json(result.rows)
     }
   })
 }

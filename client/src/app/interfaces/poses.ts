@@ -2,7 +2,7 @@
 export interface IPoses {
   id: number
   englishname: string
-  sanskritname: string
+  sanskritname?: string
   type: string
   level: string
   link: string

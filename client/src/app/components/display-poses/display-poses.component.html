@@ -1,32 +1,32 @@
 <div>
   <mat-table [dataSource]='poses'>
     <!-- English name -->
-    <div matColumnDef='englishName'>
+    <ng-container matColumnDef='englishName'>
       <mat-header-cell *matHeaderCellDef>English name</mat-header-cell>
       <mat-cell *matCellDef='let pose'>{{pose.englishname}}</mat-cell>
-    </div>
+    </ng-container>
     <!-- Sanskrit name -->
-    <div matColumnDef='sanskritName'>
+    <ng-container matColumnDef='sanskritName'>
       <mat-header-cell mat-header-cell *matHeaderCellDef>Sanskrit name</mat-header-cell>
       <mat-cell mat-cell *matCellDef='let pose'>{{pose.sanskritname}}</mat-cell>
-    </div>
+    </ng-container>
     <!-- Type -->
-    <div matColumnDef='type'>
+    <ng-container matColumnDef='type'>
       <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
       <mat-cell *matCellDef='let pose'>{{pose.type}}</mat-cell>
-    </div>
+    </ng-container>
     <!-- Level -->
-    <div matColumnDef='level'>
+    <ng-container matColumnDef='level'>
       <mat-header-cell *matHeaderCellDef>Level</mat-header-cell>
       <mat-cell *matCellDef='let pose'>{{pose.level}}</mat-cell>
-    </div>
+    </ng-container>
     <!-- Link -->
-    <div matColumnDef='link'>
+    <ng-container matColumnDef='link'>
       <mat-header-cell *matHeaderCellDef>Link</mat-header-cell>
       <mat-cell *matCellDef='let pose'>{{pose.link}}</mat-cell>
-    </div>
+    </ng-container>
     <!-- Delete and update buttons -->
-    <div matColumnDef='buttons'>
+    <ng-container matColumnDef='buttons'>
       <mat-header-cell *matHeaderCellDef></mat-header-cell> 
       <mat-cell *matCellDef='let pose'> 
         <button 
@@ -44,7 +44,7 @@
           Update
         </button> 
       </mat-cell>
-    </div>
+    </ng-container>
     <mat-header-row *matHeaderRowDef='displayedColumns'></mat-header-row>
     <mat-row *matRowDef='let pose; columns: displayedColumns'></mat-row>
   </mat-table>

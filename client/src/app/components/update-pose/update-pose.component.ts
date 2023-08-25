@@ -27,7 +27,14 @@ export class UpdatePoseComponent implements OnInit, OnDestroy {
 
     // Subscribes to the getPoseById method in the PosesService to get a specific pose based on its ID
     this.getPoseIdSub = this.poseService.getPoseById(id)
-      .subscribe(data => this.poses = data)
+      .subscribe(
+        data => { 
+          this.poses = data
+        },
+        error => {
+          console.error('Error fetching pose:', error)
+        }
+      )
   }
 
   ngOnDestroy() {
